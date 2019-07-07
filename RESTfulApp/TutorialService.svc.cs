@@ -1,4 +1,6 @@
-﻿using System;
+﻿// Project by tutorial from https://tproger.ru/translations/restful-service-asp-net/
+
+using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Linq;
