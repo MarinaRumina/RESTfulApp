@@ -50,5 +50,21 @@ namespace RESTfulApp
 
             return lst[pid];
         }
+
+        [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json, UriTemplate = "/Tutorial", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
+        public void AddTutorial(string str) => lst.Add(str);
+
+        [WebInvoke(Method = "DELETE", RequestFormat = WebMessageFormat.Json, UriTemplate = "/Tutorial/{TutorialId}", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
+        public void DeleteTutorial(string TutorialId)
+        {
+            int pid;
+
+            if(!Int32.TryParse(TutorialId, out pid))
+            {
+                throw new HttpResponseException(HttpStatusCode.BadRequest);
+            }
+
+            lst.RemoveAt(pid);
+        }
     }
 }
